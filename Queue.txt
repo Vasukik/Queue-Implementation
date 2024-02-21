@@ -1,0 +1,145 @@
+import java.util.Scanner;
+
+
+class Node
+{
+
+  Node pre;
+
+  Node next;
+
+  int data;
+
+}
+
+public class Main
+{
+
+  static Node front;
+
+  static Node rear;
+
+  static Scanner sc = new Scanner (System.in);
+
+
+  public static void main (String arg[])
+  {
+
+	System.out.println ("Enter Number of Elements");
+
+	int n = sc.nextInt ();
+
+	  enqueue (n);
+
+	while (true)
+
+	  {
+
+
+		System.out.println
+		  ("\n 1.Display\n 2.Dequeuq\n 3.Pop\n Other choice the code exit\n");
+
+
+		int ch = sc.nextInt ();
+
+
+		switch (ch)
+
+
+		  {
+
+
+
+		  case 1:
+
+
+			display ();
+
+			break;
+
+			case 2:dequeue ();
+
+			display ();
+
+			break;
+
+			default:System.out.println ("Completed");
+
+			System.exit (0);
+
+		  }
+
+	  }
+
+  }
+
+
+  static void enqueue (int n)
+  {
+
+	front = new Node ();
+
+	rear = front;
+
+	System.out.println ("Enter Elements up to " + n);
+
+	for (int i = 1; i <= n; i++)
+	  {
+
+		Node newNode = new Node ();
+
+		newNode.data = sc.nextInt ();
+
+		newNode.next = null;
+
+
+		rear.next = newNode;
+
+		newNode.pre = rear;
+
+		rear = newNode;
+
+	  }
+  }
+
+  static void display ()
+  {
+
+	Node temp = front.next;
+
+
+	while (temp != null)
+	  {
+
+		System.out.print (temp.data + " ");
+
+		temp = temp.next;
+
+	  }
+
+	System.out.println ();
+
+  }
+
+
+  static void dequeue ()
+  {
+
+	if (front != null)
+	  {
+
+		front = front.next;
+
+	  }
+
+	else
+	  {
+
+		System.out.println ("Stack empty");
+
+	  }
+
+
+  }
+
+}
